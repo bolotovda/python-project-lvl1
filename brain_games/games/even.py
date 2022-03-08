@@ -1,9 +1,10 @@
-from brain_games.logic import *
+from brain_games.logic import greet, tell_rules, do_qna, congrats, compare
 from random import randint
+
 
 def is_even():
     greet()
-    
+
     rule = 'Answer "yes" if the number is even, otherwise answer "no".'
     tell_rules(rule)
 
@@ -19,7 +20,7 @@ def is_even():
             correct_answer = 'no'
 
         result = compare(answer, correct_answer)
-        if result == False:
+        if result is False:
             return
 
         i += 1
