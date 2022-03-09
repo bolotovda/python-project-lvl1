@@ -23,7 +23,7 @@ def compare(answer, correct_answer):
         return True
     else:
         print(f'\'{answer}\' is wrong answer ;(. \
-        Correct answer was \'{correct_answer}\'.')
+Correct answer was \'{correct_answer}\'.')
         print(f'Let\'s try again, {name}!')
         return False
 
