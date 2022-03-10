@@ -1,44 +1,37 @@
-from brain_games.logic import greet, tell_rules, do_qna, congrats, compare
 from random import randint
+from brain_games import logic
 
 
-def count_greatest(a, b):
+rule = 'Find the greatest common divisor of given numbers.'
+
+
+def ask():
+    num1 = randint(1, 100)
+    num2 = randint(1, 100)
+    question = f'{num1} {num2}'
+    return question
+
+
+def check_conditions(question):
+    new_list = list(question.split(" "))
+    a = int(new_list[0])
+    b = int(new_list[1])
     c = 0
+
     if a >= b:
         while a % b != 0:
             c = a % b
             a = b
             b = c
-        return b
+        correct_answer = b
     else:
         while b % a != 0:
             c = b % a
             b = a
             a = c
-        return a
+        correct_answer = a
+    return correct_answer
 
 
-def divide():
-    greet()
-
-    rule = 'Find the greatest common divisor of given numbers.'
-    tell_rules(rule)
-
-    i = 0
-    while i < 3:
-        num1 = randint(1, 100)
-        num2 = randint(1, 100)
-
-        question = f'{num1} {num2}'
-
-        correct_answer = count_greatest(num1, num2)
-
-        answer = int(do_qna(question))
-
-        result = compare(answer, correct_answer)
-        if result is False:
-            return
-
-        i += 1
-
-    congrats()
+def chose():
+    logic.lets_play(rule, ask, check_conditions)

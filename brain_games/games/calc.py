@@ -1,30 +1,23 @@
-from brain_games.logic import greet, tell_rules, do_qna, congrats, compare
 from random import randint, choice
+from brain_games import logic
 
 
-def count():
-    greet()
+rule = 'What is the result of the expression?'
 
-    rule = 'What is the result of the expression?'
-    tell_rules(rule)
 
+def ask():
     ops = ['+', '-', '*']
+    num1 = randint(0, 10)
+    num2 = randint(1, 10)
+    op = choice(ops)
+    question = f'{num1} {op} {num2}'
+    return question
 
-    i = 0
-    while i < 3:
-        num1 = randint(0, 10)
-        num2 = randint(1, 10)
 
-        op = choice(ops)
-        question = f'{num1} {op} {num2}'
-        correct_answer = eval(str(num1) + op + str(num2))
+def check_conditions(question):
+    correct_answer = eval(question)
+    return correct_answer
 
-        answer = int(do_qna(question))
 
-        result = compare(answer, correct_answer)
-        if result is False:
-            return
-
-        i += 1
-
-    congrats()
+def calculate():
+    logic.lets_play(rule, ask, check_conditions)
