@@ -16,7 +16,7 @@
 
 Knoledge of math 1-3 grade
 
-### Instraction
+### Instruction
 
 You can see example of installation and launching games below.
 
