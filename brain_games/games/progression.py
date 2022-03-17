@@ -2,32 +2,31 @@ from random import randint
 from brain_games import logic
 
 
-rule = 'What number is missing in the progression?'
+RULE = 'What number is missing in the progression?'
 
 
-def ask():
-    i = 0
-    progression = [randint(1, 50)]
-    add = randint(2, 5)
-    while i < randint(4, 9):
-        progression += [progression[i] + add]
-        i += 1
+def ask_and_check():
+    progression = []
+    first_number = randint(1, 50)
+    step = randint(2, 5)
+    amount_of_numbers = randint(5, 10)
 
-    x = randint(0, len(progression) - 1)
+    for n in range(0, amount_of_numbers):
+        progression.append(first_number)
+        first_number += step
 
-    global number
-    number = progression[x]
+    index_of_the_number = randint(0, len(progression) - 1)
+    number = progression[index_of_the_number]
 
     progression.remove(number)
-    progression.insert(x, '..')
-    question = ' '.join(str(x) for x in progression)
-    return question
+    progression.insert(index_of_the_number, '..')
+    question = ' '.join(
+        str(index_of_the_number) for index_of_the_number in progression)
 
+    correct_answer = str(number)
 
-def check_conditions(question):
-    correct_answer = number
-    return correct_answer
+    return question, correct_answer
 
 
 def guess():
-    logic.lets_play(rule, ask, check_conditions)
+    logic.lets_play(RULE, ask_and_check)

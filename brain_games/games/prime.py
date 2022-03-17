@@ -2,22 +2,26 @@ from random import randint
 from brain_games import logic
 
 
-rule = 'Answer "yes" if given number is prime. Otherwise answer "no".'
+RULE = 'Answer "yes" if given number is prime. Otherwise answer "no".'
 
 
-def ask():
+def is_prime(question):
+    counter = 2
+    while question % counter != 0:
+        counter += 1
+    return counter == question
+
+
+def ask_and_check():
     question = randint(1, 100)
-    return question
+
+    if is_prime(question):
+        correct_answer = 'yes'
+    else:
+        correct_answer = 'no'
+
+    return question, correct_answer
 
 
-def check_conditions(question):
-    i = 2
-    while question % i != 0:
-        i += 1
-    if question == i:
-        return 'yes'
-    return 'no'
-
-
-def is_prime():
-    logic.lets_play(rule, ask, check_conditions)
+def verify_prime_number():
+    logic.lets_play(RULE, ask_and_check)

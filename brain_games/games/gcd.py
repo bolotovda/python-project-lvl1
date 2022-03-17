@@ -2,36 +2,36 @@ from random import randint
 from brain_games import logic
 
 
-rule = 'Find the greatest common divisor of given numbers.'
+RULE = 'Find the greatest common divisor of given numbers.'
 
 
-def ask():
-    num1 = randint(1, 100)
-    num2 = randint(1, 100)
-    question = f'{num1} {num2}'
-    return question
-
-
-def check_conditions(question):
-    new_list = list(question.split(" "))
-    a = int(new_list[0])
-    b = int(new_list[1])
-    c = 0
-
-    if a >= b:
-        while a % b != 0:
-            c = a % b
-            a = b
-            b = c
-        correct_answer = b
+def define_gcd(first_number, second_number):
+    buffer = 0
+    gcd = 0
+    if first_number >= second_number:
+        while first_number % second_number != 0:
+            buffer = first_number % second_number
+            first_number = second_number
+            second_number = buffer
+        gcd = second_number
     else:
-        while b % a != 0:
-            c = b % a
-            b = a
-            a = c
-        correct_answer = a
-    return correct_answer
+        while second_number % first_number != 0:
+            buffer = second_number % first_number
+            second_number = first_number
+            first_number = buffer
+        gcd = first_number
+    return gcd
+
+
+def ask_and_check():
+    first_number = randint(1, 100)
+    second_number = randint(1, 100)
+
+    question = f'{first_number} {second_number}'
+    correct_answer = str(define_gcd(first_number, second_number))
+
+    return question, correct_answer
 
 
 def chose():
-    logic.lets_play(rule, ask, check_conditions)
+    logic.lets_play(RULE, ask_and_check)

@@ -2,22 +2,20 @@ from random import randint, choice
 from brain_games import logic
 
 
-rule = 'What is the result of the expression?'
+RULE = 'What is the result of the expression?'
 
 
-def ask():
-    ops = ['+', '-', '*']
-    num1 = randint(0, 10)
-    num2 = randint(1, 10)
-    op = choice(ops)
-    question = f'{num1} {op} {num2}'
-    return question
+def ask_and_check():
+    operands = ['+', '-', '*']
+    first_operator = randint(0, 10)
+    second_operator = randint(1, 10)
 
+    operand = choice(operands)
+    question = f'{first_operator} {operand} {second_operator}'
+    correct_answer = str(eval(question))
 
-def check_conditions(question):
-    correct_answer = eval(question)
-    return correct_answer
+    return question, correct_answer
 
 
 def calculate():
-    logic.lets_play(rule, ask, check_conditions)
+    logic.lets_play(RULE, ask_and_check)
