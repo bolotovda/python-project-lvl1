@@ -6,13 +6,17 @@ RULE = 'Answer "yes" if given number is prime. Otherwise answer "no".'
 
 
 def is_prime(question):
-    counter = 2
-    while question % counter != 0:
-        counter += 1
-    return counter == question
+    if question > 1:
+        for i in range(2, question):
+            if (question % i) == 0:
+                return False
+        else:
+            return True
+    else:
+        return False
 
 
-def ask_and_check():
+def prepare_data():
     question = randint(1, 100)
 
     if is_prime(question):
@@ -23,5 +27,5 @@ def ask_and_check():
     return question, correct_answer
 
 
-def verify_prime_number():
-    logic.lets_play(RULE, ask_and_check)
+def input_rule_and_data():
+    logic.run_game(RULE, prepare_data)

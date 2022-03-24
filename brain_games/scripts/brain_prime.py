@@ -3,7 +3,7 @@ from brain_games.games import prime
 
 
 def main():
-    prime.verify_prime_number()
+    prime.input_rule_and_data()
 
     if __name__ == '__main__':
         main()

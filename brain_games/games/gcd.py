@@ -23,7 +23,7 @@ def define_gcd(first_number, second_number):
     return gcd
 
 
-def ask_and_check():
+def prepare_data():
     first_number = randint(1, 100)
     second_number = randint(1, 100)
 
@@ -33,5 +33,5 @@ def ask_and_check():
     return question, correct_answer
 
 
-def chose():
-    logic.lets_play(RULE, ask_and_check)
+def input_rule_and_data():
+    logic.run_game(RULE, prepare_data)

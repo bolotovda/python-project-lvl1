@@ -5,7 +5,7 @@ from brain_games import logic
 RULE = 'What number is missing in the progression?'
 
 
-def ask_and_check():
+def prepare_data():
     progression = []
     first_number = randint(1, 50)
     step = randint(2, 5)
@@ -28,5 +28,5 @@ def ask_and_check():
     return question, correct_answer
 
 
-def guess():
-    logic.lets_play(RULE, ask_and_check)
+def input_rule_and_data():
+    logic.run_game(RULE, prepare_data)

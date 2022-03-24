@@ -1,7 +1,7 @@
 import prompt
 
 
-def lets_play(rule, ask_and_check):
+def run_game(rule, prepare_data):
     print('Welcome to the Brain Games!')
 
     name = prompt.string('May I have your name? ')
@@ -12,7 +12,7 @@ def lets_play(rule, ask_and_check):
     counter = 0
     amount_of_questions = 3
     while counter < amount_of_questions:
-        question_and_correct_answer = ask_and_check()
+        question_and_correct_answer = prepare_data()
         question = question_and_correct_answer[0]
         print(f'Question: {question}')
         answer = prompt.string('Your answer: ')

@@ -3,7 +3,7 @@ from brain_games.games import gcd
 
 
 def main():
-    gcd.chose()
+    gcd.input_rule_and_data()
 
     if __name__ == '__main__':
         main()
