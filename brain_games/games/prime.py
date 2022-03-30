@@ -6,14 +6,13 @@ RULE = 'Answer "yes" if given number is prime. Otherwise answer "no".'
 
 
 def is_prime(question):
-    if question > 1:
-        for i in range(2, question):
-            if (question % i) == 0:
-                return False
-        else:
-            return True
-    else:
+    if question <= 1:
         return False
+    for i in range(2, question):
+        if (question % i) == 0:
+            return False
+    else:
+        return True
 
 
 def prepare_data():
